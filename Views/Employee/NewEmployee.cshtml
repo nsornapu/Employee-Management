@@ -1,0 +1,41 @@
+﻿@*@model test.Models.Employee*@
+@model test.ViewModels.EmployeeFormViewModel
+@{
+    ViewBag.Title = "NewEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Employee</h2>
+
+@using (Html.BeginForm("Save", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.employee.name, "Name")
+        @Html.TextBoxFor(m => m.employee.name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.employee.email, "Email")
+        @Html.TextBoxFor(m => m.employee.email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.employee.phoneNumber, "Phone Number")
+        @Html.TextBoxFor(m => m.employee.phoneNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.employee.departmentId, "Department")
+        @Html.DropDownListFor(m => m.departments , new SelectList(Model.departments, "Id", "Name"), "Select Department",new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.employee.skillId, "Skill")
+        @Html.DropDownListFor(m => m.skills, new SelectList(Model.skills, "Id", "Name"), "Select Skill", new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m=>m.employee.id)
+    <button type="submit" class="btn btn-primary">
+        Save
+    </button>
+}
+

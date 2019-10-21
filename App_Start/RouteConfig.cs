@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace EmployeeManagement
+namespace test
 {
     public class RouteConfig
     {
@@ -14,7 +14,6 @@ namespace EmployeeManagement
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapMvcAttributeRoutes();
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

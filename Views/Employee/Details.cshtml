@@ -1,0 +1,50 @@
+﻿@model test.ViewModels.EmployeesListViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee Details</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.employees.FirstOrDefault().name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.employees.FirstOrDefault().email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.employees.FirstOrDefault().phoneNumber)
+        </th>
+    </tr>
+    @foreach (var employee in Model.employees)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => employee.name)
+            </td>
+            <td>
+                @Html.DisplayFor(m => employee.email)
+            </td>
+            <td>
+                @Html.DisplayFor(m => employee.phoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = employee.id })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "DetailsById", new { id = employee.id })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = employee.id })
+            </td>
+        </tr>
+
+    }
+</table>
+
+<button class="form-group">
+    @Html.ActionLink("Create New Employee", "NewEmployee")
+</button>
+
